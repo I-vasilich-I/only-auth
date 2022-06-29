@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 import LogIn from './pages/login/LogIn';
 import LogOut from './pages/logout/LogOut';
@@ -26,12 +26,12 @@ const GlobalStyle = createGlobalStyle`
 
   @font-face {
     font-family: 'Helvetica Neue';
-    src: url('./assets/fontsHelveticaNeueCyr-Medium.eot');
+    src: url('./assets/fonts/HelveticaNeueCyr-Medium.eot');
     src: local('HelveticaNeueCyr-Medium'),
-        url('./assets/fontsHelveticaNeueCyr-Medium.eot?#iefix') format('embedded-opentype')
-        url('./assets/fontsHelveticaNeueCyr-Medium.woff2') format('woff2'),
-        url('./assets/fontsHelveticaNeueCyr-Medium.woff') format('woff'),
-        url('./assets/fontsHelveticaNeueCyr-Medium.ttf') format('truetype');
+        url('./assets/fonts/HelveticaNeueCyr-Medium.eot?#iefix') format('embedded-opentype')
+        url('./assets/fonts/HelveticaNeueCyr-Medium.woff2') format('woff2'),
+        url('./assets/fonts/HelveticaNeueCyr-Medium.woff') format('woff'),
+        url('./assets/fonts/HelveticaNeueCyr-Medium.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
   }
@@ -93,6 +93,7 @@ const AppContainer = () => {
               <Route element={<ProtectedRoutes />}>
                 <Route path={ROUTES.PROFILE} element={<LogOut />} />
               </Route>
+              <Route path="*" element={<Navigate to={ROUTES.LOGIN} replace />} />
             </Routes>
           </section>
         </main>
