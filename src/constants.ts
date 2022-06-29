@@ -1,6 +1,8 @@
 const ROUTES = {
   LOGIN: '/login',
-  LOGOUT: '/'
+  PROFILE: '/profile'
 }
 
-export { ROUTES }
+const THE_LOGIN = 'steve.jobs@example.com';
+
+export { ROUTES, THE_LOGIN }

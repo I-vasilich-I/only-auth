@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Header from './components/header/Header';
 import ProtectedRoutes from './components/protectedRoute/ProtectedRoute';
 import Context from './context/Context';
 import LogIn from './pages/login/LogIn';
 import LogOut from './pages/logout/LogOut';
 import reportWebVitals from './reportWebVitals';
+import { ROUTES } from './constants';
+import 'normalize.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -18,10 +21,11 @@ const AppContainer = () => {
     <React.StrictMode>
     <Context.Provider value={{ user, setUser }}>
       <Router>
+        <Header />
         <Routes>
-          <Route path="/login" element={<LogIn />} />
+          <Route path={ROUTES.LOGIN} element={<LogIn />} />
           <Route element={<ProtectedRoutes />}>
-            <Route path="/" element={<LogOut />} />
+            <Route path={ROUTES.PROFILE} element={<LogOut />} />
           </Route>
         </Routes>
       </Router>
