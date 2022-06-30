@@ -50,7 +50,7 @@ const Div = styled.div`
   }
 `;
 
-const LogOut = () => {
+const Profile = () => {
   const { user, setUser } = useContext(Context);
 
   return (
@@ -61,4 +61,4 @@ const LogOut = () => {
   )
 }
 
-export default LogOut;
+export default Profile;
