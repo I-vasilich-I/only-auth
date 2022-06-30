@@ -1,5 +1,7 @@
 # Only Auth
 
+Haven't used `Webpack, Redux, Redux-Saga, etc`, I think `cra` is good enough for this kind of project
+
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
