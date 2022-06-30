@@ -4,4 +4,6 @@ interface IFormInputs {
   remember: boolean;
 }
 
-export type { IFormInputs };
+type TAutoComplete = 'on' | 'off';
+
+export type { IFormInputs, TAutoComplete };

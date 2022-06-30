@@ -1,6 +1,6 @@
 import { UseFormRegisterReturn } from "react-hook-form";
 import styled from "styled-components";
-import { IFormInputs } from "../../types";
+import { IFormInputs, TAutoComplete } from "../../types";
 import Label from "../label/Label";
 
 const StyledInput = styled.input`
@@ -22,6 +22,7 @@ const StyledInput = styled.input`
   &.error {
     border: 1px solid #E26F6F;
     caret-color: #E26F6F;
+    color: #E26F6F;
   }
 `;
 
@@ -31,7 +32,7 @@ interface IProps {
   type: 'email' | 'password';
   label: string;
   error?: string;
-  autoComplete?: string;
+  autoComplete: TAutoComplete;
 }
 
 const Field = ({ props, name, type, label, autoComplete, error = '' }: IProps) => {
@@ -40,7 +41,7 @@ const Field = ({ props, name, type, label, autoComplete, error = '' }: IProps) =
   return (
     <Label name={name}>
       {label}
-      <StyledInput type={type} id={name} className={className} autoComplete={autoComplete} {...props} />
+      <StyledInput type={type} id={name} className={className} autoComplete={autoComplete === 'on' ? name : 'off'} {...props} />
       <span>{error}</span>
     </Label>
   )

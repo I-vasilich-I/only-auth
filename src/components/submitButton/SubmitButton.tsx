@@ -17,7 +17,7 @@ const Button = styled.input`
   font-size: 16px;
   line-height: 19px;
   color: #FFFFFF;
-  transition: all .3s ease-in-out;
+  transition: background .3s ease-in-out;
 
   &:disabled {
     background: #99A9FF;
@@ -26,6 +26,10 @@ const Button = styled.input`
 
   &:hover:not(:disabled), &:focus {
     background: #2449fe;
+  }
+
+  &:active:not(:disabled) {
+    transform: translate(2px, 2px);
   }
 `;
 

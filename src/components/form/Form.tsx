@@ -6,7 +6,7 @@ import styled from "styled-components";
 import * as yup from "yup";
 import Context from "../../context/Context";
 import useLogin from "../../hooks/useLogin";
-import { IFormInputs } from "../../types";
+import { IFormInputs, TAutoComplete } from "../../types";
 import { ROUTES } from "../../constants";
 import ServerError from "../serverError/ServerError";
 import Loader from "../loader/Loader";
@@ -25,7 +25,7 @@ const StyledForm = styled.form`
 `;
 
 const schema = yup.object({
-  email: yup.string().email().required('Обязательное поле'),
+  email: yup.string().required('Обязательное поле').email('Введите валидный email'),
   password: yup.string().required('Обязательное поле').min(8, 'Не менее 8 символов'),
   remember: yup.boolean(),
 });
@@ -35,12 +35,13 @@ const Form = () => {
   const { setUser } = useContext(Context);
   const { loading, error, status, data, dispatch } = useLogin();
   const { register, handleSubmit, formState: { errors } } = useForm<IFormInputs>({
+    mode: "onChange",
     resolver: yupResolver(schema)
   });
 
   const hasErrors = Boolean(errors.email || errors.password);
 
-  const rememberMe = localStorage.getItem('rememberMe') || 'off';
+  const rememberMe = localStorage.getItem('rememberMe') as TAutoComplete || 'off';
 
   const onSubmit: SubmitHandler<IFormInputs> = (data) => {
     dispatch(data);
@@ -63,6 +64,7 @@ const Form = () => {
         name="email" 
         type="email" 
         label="Логин" 
+        autoComplete={rememberMe}
         error={errors.email?.message} 
         props={register("email", { required: true })} 
       />

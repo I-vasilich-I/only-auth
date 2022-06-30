@@ -35,11 +35,15 @@ const Div = styled.div`
     font-size: 18px;
     line-height: 22px;
     color: #000000;
-    transition: all .3s ease-in-out;
+    transition: background .3s ease-in-out;
 
     &:hover, &:focus {
       background: #e2e0e0;
     }
+
+    &:active {
+    transform: translate(2px, 2px);
+  }
   }
 
   @media (max-width: 550px) {
