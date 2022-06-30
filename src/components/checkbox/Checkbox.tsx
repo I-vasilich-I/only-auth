@@ -8,6 +8,7 @@ const Check = styled.input`
   margin-left: 5px;
   margin-right: 24px;
   position: relative;
+  cursor: pointer;
 
   &::before {
     content: '';
